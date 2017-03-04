@@ -1,3 +1,18 @@
+// 利用ES6的默认参数值特性，可以实现强制必须传入参数
+// 思路：将默认值设置为函数调用表达式（抛出一个错误），如果不传入值来覆盖，在传递默认值时发生错误
+function mandotory() {
+  return new Error("missing parameter!");
+}
+// 将x的默认值设置为mandotory函数调用表达式，假设不传递值来覆盖，在mandotory()求值是会抛出错误
+function add(x = mandotory(), y = 1) {
+  return x + y; 
+}
+console.log(add());   // "missing parameter!"
+console.log(add(1));  // ==> 2
+console.log(add(1, 3));  // ==> 4
+
+// -----------------------------------------------------------------------------------------------
+
 // 倒计时功能
 function countDown(count, interval, callback) {
   if(count < 0) {return;}
